@@ -15,6 +15,7 @@ import {
 import type { AboutSlide, AboutProps } from './data';
 import { companyValues, leadershipRoles, methodologyItems } from './data';
 import type { LucideIcon } from 'lucide-react';
+import { styles } from './styles';
 
 const iconMap: Record<string, LucideIcon> = {
   Heart: Heart,
@@ -45,17 +46,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
         <Grid container spacing={6} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Box>
-              <Typography
-                sx={{
-                  fontSize: '0.875rem',
-                  fontWeight: 600,
-                  color: '#00D1FF',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  mb: 2,
-                  textAlign: { xs: 'center', md: 'left' }
-                }}
-              >
+              <Typography sx={styles.title}>
                 Who We Are
               </Typography>
 
@@ -191,16 +182,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
       content: (
         <Box>
           <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography
-              sx={{
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: '#00D1FF',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                mb: 2
-              }}
-            >
+            <Typography sx={styles.title}>
               Our Leadership
             </Typography>
 
@@ -369,17 +351,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
-            <Typography
-              sx={{
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: '#00D1FF',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                mb: 2,
-                textAlign: { xs: 'center', md: 'justify' }
-              }}
-            >
+            <Typography sx={styles.title}>
               How We Work
             </Typography>
 
