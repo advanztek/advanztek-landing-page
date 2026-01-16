@@ -10,79 +10,24 @@ import {
   CheckCircle,
   Award,
   Code,
-  Layers
+  Layers, 
 } from 'lucide-react';
+import type { AboutSlide, AboutProps } from './data';
+import { companyValues, leadershipRoles, methodologyItems } from './data';
+import type { LucideIcon } from 'lucide-react';
 
-interface AboutSlide {
-  id: number;
-  category: string;
-  content: React.ReactNode;
-}
-
-interface AboutProps {
-  initialSlide?: number;
-}
-
-// Data for Company slide
-const companyValues = [
-  { icon: Heart, label: 'Faith in God', bgColor: '#020066', color: '#fff' },
-  { icon: TrendingUp, label: 'Empowerment', bgColor: '#00D1FF', color: '#020066' },
-  { icon: Shield, label: 'Integrity', bgColor: '#020066', color: '#fff' },
-  { icon: Award, label: 'Excellence', bgColor: '#00D1FF', color: '#020066' }
-];
-
-// Data for Leadership slide
-const leadershipRoles = [
-  {
-    icon: Users,
-    bgColor: '#020066',
-    iconColor: '#fff',
-    title: 'Chief Executive Officer',
-    description: 'Provides ultimate authority over strategic, financial, and operational decisions. Sets organizational vision and oversees all subsidiaries with faith-driven leadership.',
-    hoverBorderColor: '#020066'
-  },
-  {
-    icon: Target,
-    bgColor: '#00D1FF',
-    iconColor: '#020066',
-    title: 'IT Manager',
-    description: 'Oversees all technology operations, coordinates technical teams, and ensures delivery of cutting-edge solutions across frontend and backend departments.',
-    hoverBorderColor: '#00D1FF'
-  },
-  {
-    icon: Code,
-    bgColor: '#020066',
-    iconColor: '#fff',
-    title: 'Team Leads',
-    description: 'Frontend and Backend Team Leads coordinate development tasks, mentor developers, and ensure adherence to coding standards and best practices.',
-    hoverBorderColor: '#020066'
-  }
-];
-
-// Data for Our Approach slide
-const methodologyItems = [
-  {
-    icon: CheckCircle,
-    bgColor: '#020066',
-    iconColor: '#fff',
-    title: 'Quality & Compliance',
-    description: 'Adherence to industry standards, regulatory requirements, and ethical practices rooted in integrity and biblical principles.'
-  },
-  {
-    icon: Lightbulb,
-    bgColor: '#00D1FF',
-    iconColor: '#020066',
-    title: 'Innovation & Excellence',
-    description: 'Continuous improvement through technology, training, and faith-driven innovation that transforms lives and communities.'
-  },
-  {
-    icon: Layers,
-    bgColor: '#020066',
-    iconColor: '#fff',
-    title: 'Client Engagement Process',
-    description: 'Collaborative approach with clients, ensuring their needs are met through transparent communication, teamwork, and service excellence.'
-  }
-];
+const iconMap: Record<string, LucideIcon> = {
+  Heart: Heart,
+  TrendingUp: TrendingUp,
+  Shield: Shield,
+  Award: Award,
+  Users: Users,
+  Target: Target,
+  Code: Code,
+  CheckCircle: CheckCircle,
+  Lightbulb: Lightbulb,
+  Layers: Layers
+};
 
 const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
   const [activeSlide, setActiveSlide] = useState<number>(initialSlide);
@@ -162,7 +107,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
 
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mt: 5, justifyContent: { xs: 'center', md: 'flex-start' } }}>
                 {companyValues.map((value, idx) => {
-                  const IconComponent = value.icon;
+                  const IconComponent = iconMap[value.icon];
                   return (
                     <Chip
                       key={idx}
@@ -292,7 +237,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
 
           <Grid container spacing={4} sx={{ display: 'flex', justifyContent: 'center' }}>
             {leadershipRoles.map((role, idx) => {
-              const IconComponent = role.icon;
+              const IconComponent = iconMap[role.icon];
               return (
                 <Grid key={idx} size={{ xs: 12, sm: 6, md: 4 }}>
                   <Box
@@ -471,7 +416,7 @@ const About: React.FC<AboutProps> = ({ initialSlide = 0 }) => {
 
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, textAlign: { xs: 'justify' } }}>
               {methodologyItems.map((item, idx) => {
-                const IconComponent = item.icon;
+                const IconComponent = iconMap[item.icon];
                 return (
                   <Box key={idx} sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
                     <Box
